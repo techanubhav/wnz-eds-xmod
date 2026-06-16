@@ -78,14 +78,24 @@ var CustomImportScript = (() => {
     );
     const uniqueItems = [...new Set(items)];
     const cells = uniqueItems.map((item) => {
-      const icon = item.querySelector("img.tile-item__icon, img");
+      const img = item.querySelector("img.tile-item__icon, img");
+      let iconCell = "";
+      if (img) {
+        const src = img.getAttribute("src") || "";
+        const file = src.split("/").pop().replace(/\.svg.*$/i, "");
+        if (file) {
+          const p = document2.createElement("p");
+          p.textContent = `:${file}:`;
+          iconCell = p;
+        }
+      }
       const href = item.getAttribute("href");
       const labelEl = item.querySelector(".tile-item__cta, span");
       const labelText = (labelEl ? labelEl.textContent : item.textContent).trim();
       const link = document2.createElement("a");
       if (href) link.href = href;
       link.textContent = labelText;
-      return [icon, link];
+      return [iconCell, link];
     });
     const block = WebImporter.Blocks.createBlock(document2, { name: "cards-tile", cells });
     element.replaceWith(block);
@@ -97,13 +107,22 @@ var CustomImportScript = (() => {
     const items = Array.from(itemsWrapper.querySelectorAll(":scope > a.quick-link-item, :scope > a"));
     const cells = [];
     items.forEach((item) => {
-      const icon = item.querySelector("img.quick-link-item__icon, img");
+      const img = item.querySelector("img.quick-link-item__icon, img");
+      let imageCell = "";
+      if (img) {
+        const src = img.getAttribute("src") || "";
+        const file = src.split("/").pop().replace(/\.svg.*$/i, "");
+        if (file) {
+          const p = document2.createElement("p");
+          p.textContent = `:${file}:`;
+          imageCell = p;
+        }
+      }
       const label = item.querySelector(".quick-link-item__text, span");
       const href = item.getAttribute("href");
       const link = document2.createElement("a");
       if (href) link.setAttribute("href", href);
       link.textContent = (label ? label.textContent : item.textContent).trim();
-      const imageCell = icon || "";
       const bodyCell = link;
       cells.push([imageCell, bodyCell]);
     });
