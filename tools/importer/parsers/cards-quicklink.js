@@ -24,9 +24,20 @@ export default function parse(element, { document }) {
   const cells = [];
 
   items.forEach((item) => {
-    // Image cell: the icon image. The cards block treats a cell with only a
-    // picture/img as the card image.
-    const icon = item.querySelector('img.quick-link-item__icon, img');
+    // Image cell: the icon, emitted as an EDS icon token (`:name:`) so it is
+    // served from the local /icons/ folder (external SVGs fail EDS image
+    // validation). md2html converts the token back into span.icon on render.
+    const img = item.querySelector('img.quick-link-item__icon, img');
+    let imageCell = '';
+    if (img) {
+      const src = img.getAttribute('src') || '';
+      const file = src.split('/').pop().replace(/\.svg.*$/i, '');
+      if (file) {
+        const p = document.createElement('p');
+        p.textContent = `:${file}:`;
+        imageCell = p;
+      }
+    }
 
     // Body cell: a link wrapping the label text, preserving the destination.
     const label = item.querySelector('.quick-link-item__text, span');
@@ -36,7 +47,6 @@ export default function parse(element, { document }) {
     if (href) link.setAttribute('href', href);
     link.textContent = (label ? label.textContent : item.textContent).trim();
 
-    const imageCell = icon || '';
     const bodyCell = link;
 
     cells.push([imageCell, bodyCell]);

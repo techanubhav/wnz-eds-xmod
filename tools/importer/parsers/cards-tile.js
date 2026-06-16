@@ -38,8 +38,20 @@ export default function parse(element, { document }) {
   const uniqueItems = [...new Set(items)];
 
   const cells = uniqueItems.map((item) => {
-    // Image cell: the tile icon.
-    const icon = item.querySelector('img.tile-item__icon, img');
+    // Image cell: the tile icon, emitted as an EDS icon token (`:name:`) so it
+    // is served from the local /icons/ folder (external SVGs fail EDS image
+    // validation). md2html converts the token back into span.icon on render.
+    const img = item.querySelector('img.tile-item__icon, img');
+    let iconCell = '';
+    if (img) {
+      const src = img.getAttribute('src') || '';
+      const file = src.split('/').pop().replace(/\.svg.*$/i, '');
+      if (file) {
+        const p = document.createElement('p');
+        p.textContent = `:${file}:`;
+        iconCell = p;
+      }
+    }
 
     // Body cell: a link carrying the CTA label, pointing at the tile's href.
     const href = item.getAttribute('href');
@@ -50,7 +62,7 @@ export default function parse(element, { document }) {
     if (href) link.href = href;
     link.textContent = labelText;
 
-    return [icon, link];
+    return [iconCell, link];
   });
 
   const block = WebImporter.Blocks.createBlock(document, { name: 'cards-tile', cells });
