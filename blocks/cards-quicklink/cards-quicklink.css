@@ -1,0 +1,81 @@
+/*
+ * cards-quicklink -- Westpac "Quick links" row
+ * Source: .quick-link-block (www.westpac.co.nz) -- 3 horizontal items: icon + purple label + red arrow
+ * Decorated EDS DOM: .cards-quicklink > ul > li > (.cards-quicklink-card-image picture/img) + (.cards-quicklink-card-body > p > a)
+ */
+
+.cards-quicklink > ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+.cards-quicklink > ul > li {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 16px;
+  padding: 24px 20px 22px;
+  background-color: var(--background-color);
+}
+
+/* icon */
+.cards-quicklink .cards-quicklink-card-image {
+  flex: 0 0 auto;
+  line-height: 0;
+}
+
+.cards-quicklink .cards-quicklink-card-image img {
+  width: 57px;
+  height: 40px;
+  object-fit: contain;
+}
+
+/* label */
+.cards-quicklink .cards-quicklink-card-body {
+  margin: 0;
+  flex: 1 1 auto;
+}
+
+.cards-quicklink .cards-quicklink-card-body p {
+  margin: 0;
+}
+
+.cards-quicklink .cards-quicklink-card-body a {
+  display: inline-flex;
+  align-items: center;
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 1.3;
+  color: var(--wbc-purple);
+  text-decoration: none;
+}
+
+.cards-quicklink .cards-quicklink-card-body a:hover {
+  color: var(--wbc-purple);
+  text-decoration: none;
+}
+
+/* red arrow after the label */
+.cards-quicklink .cards-quicklink-card-body a::after {
+  content: "";
+  display: inline-block;
+  width: 11px;
+  height: 10px;
+  margin-left: 12px;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="11" height="10" viewBox="0 0 11 10"><path d="M6 0L4.6 1.4 7.2 4H0v2h7.2L4.6 8.6 6 10l4.5-4.5a.7.7 0 000-1L6 0z" fill="%23da1710"/></svg>');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+/* desktop: 3 items in a centered horizontal row */
+@media (width >= 900px) {
+  .cards-quicklink > ul {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px 30px;
+  }
+}

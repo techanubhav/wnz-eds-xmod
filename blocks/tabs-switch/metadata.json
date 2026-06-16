@@ -1,0 +1,29 @@
+{
+  "variantName": "tabs-switch",
+  "baseBlock": "tabs",
+  "version": "1.0.0",
+  "created": "2026-06-16T07:52:41Z",
+  "sourceContext": {
+    "originUrl": "https://www.westpac.co.nz",
+    "originPage": "Westpac NZ homepage",
+    "blockPosition": "middle"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "spacious",
+    "purpose": "content-switcher",
+    "imagePattern": "noimg"
+  },
+  "contentPattern": {
+    "structure": "topic label + switchable content panel per row"
+  },
+  "reuseGuidance": {
+    "suitableFor": ["topic-driven content switchers","filterable info panels selected by label"],
+    "notSuitableFor": ["static side-by-side content","simple FAQ accordions"]
+  },
+  "usage": {
+    "pagesUsing": ["/index"],
+    "reuseCount": 1,
+    "lastUsed": "2026-06-16T07:52:41Z"
+  }
+}

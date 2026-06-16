@@ -1,0 +1,29 @@
+{
+  "variantName": "columns-promo",
+  "baseBlock": "columns",
+  "version": "1.0.0",
+  "created": "2026-06-16T07:52:41Z",
+  "sourceContext": {
+    "originUrl": "https://www.westpac.co.nz",
+    "originPage": "Westpac NZ homepage",
+    "blockPosition": "middle"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "accent",
+    "density": "spacious",
+    "purpose": "promo-split",
+    "imagePattern": "large"
+  },
+  "contentPattern": {
+    "structure": "image + heading + paragraph + CTA (two-up)"
+  },
+  "reuseGuidance": {
+    "suitableFor": ["side-by-side promo blocks with one image and a CTA","tinted feature callouts"],
+    "notSuitableFor": ["3+ column data layouts","plain text-only columns"]
+  },
+  "usage": {
+    "pagesUsing": ["/index"],
+    "reuseCount": 1,
+    "lastUsed": "2026-06-16T07:52:41Z"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "variantName": "hero-donate",
+  "baseBlock": "hero",
+  "version": "1.0.0",
+  "created": "2026-06-16T07:52:41Z",
+  "sourceContext": {
+    "originUrl": "https://www.westpac.co.nz",
+    "originPage": "Westpac NZ homepage",
+    "blockPosition": "top"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "dark",
+    "density": "spacious",
+    "purpose": "campaign-hero",
+    "imagePattern": "large"
+  },
+  "contentPattern": {
+    "structure": "heading + subheading + 1 CTA + lifestyle image"
+  },
+  "reuseGuidance": {
+    "suitableFor": ["campaign/promotional landing banners","top-of-page hero with a single donate/learn CTA"],
+    "notSuitableFor": ["text-only heroes without imagery","multi-CTA hero layouts"]
+  },
+  "usage": {
+    "pagesUsing": ["/index"],
+    "reuseCount": 1,
+    "lastUsed": "2026-06-16T07:52:41Z"
+  }
+}

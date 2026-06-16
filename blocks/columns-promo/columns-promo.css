@@ -1,0 +1,106 @@
+/* columns-promo -- "Learn how to spot scams" promo
+ * Two-column side-by-side: text content on the left, image on the right.
+ * Section background (pink-tint) is applied at section level -- not duplicated here.
+ * Values extracted from source .promo-block on www.westpac.co.nz. */
+
+.columns-promo {
+  color: var(--text-color);
+}
+
+/* mobile: stack vertically, image below content */
+.columns-promo > div {
+  display: flex;
+  flex-direction: column;
+}
+
+.columns-promo > div > div {
+  order: 1;
+}
+
+.columns-promo > div > .columns-promo-img-col {
+  order: 2;
+  margin-top: 24px;
+}
+
+.columns-promo > div > .columns-promo-img-col img {
+  display: block;
+  width: 100%;
+  object-fit: cover;
+}
+
+/* heading */
+.columns-promo h2 {
+  margin: 0 0 16px;
+  font-family: var(--heading-font-family);
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 1.1;
+  color: var(--wbc-purple);
+}
+
+/* body copy */
+.columns-promo p {
+  margin: 6px 0 20px;
+  font-family: var(--body-font-family);
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--text-color);
+}
+
+/* CTA pill button (red fill, white text) -- matches source .btn--tertiary.
+ * Styles both EDS-decorated buttons and the bare last paragraph link, since
+ * EDS does not always auto-decorate links inside multi-element cells. */
+.columns-promo .button-container {
+  margin: 0;
+}
+
+.columns-promo a.button:any-link,
+.columns-promo > div > div > p:last-child > a:only-child:any-link {
+  display: inline-block;
+  margin: 0;
+  border: 1px solid var(--wbc-red);
+  border-radius: 25px;
+  padding: 14px 24px;
+  background-color: var(--wbc-red);
+  color: #fff;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.2;
+  text-decoration: none;
+}
+
+.columns-promo a.button:any-link:hover,
+.columns-promo a.button:any-link:focus-visible,
+.columns-promo > div > div > p:last-child > a:only-child:any-link:hover,
+.columns-promo > div > div > p:last-child > a:only-child:any-link:focus-visible {
+  border-color: #b51009;
+  background-color: #b51009;
+  color: #fff;
+  text-decoration: none;
+}
+
+@media (width >= 900px) {
+  .columns-promo h2 {
+    font-size: 40px;
+    line-height: 44px;
+  }
+
+  .columns-promo > div {
+    flex-direction: row;
+    align-items: center;
+    gap: 104px;
+  }
+
+  /* content cell on the left (~33%), image cell on the right (~58%) */
+  .columns-promo > div > div {
+    flex: 1 1 33%;
+    order: 1;
+    margin-top: 0;
+  }
+
+  .columns-promo > div > .columns-promo-img-col {
+    flex: 1 1 58%;
+    order: 2;
+    margin-top: 0;
+  }
+}
