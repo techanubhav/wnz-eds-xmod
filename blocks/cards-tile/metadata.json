@@ -1,0 +1,29 @@
+{
+  "variantName": "cards-tile",
+  "baseBlock": "cards",
+  "version": "1.0.0",
+  "created": "2026-06-16T07:52:41Z",
+  "sourceContext": {
+    "originUrl": "https://www.westpac.co.nz",
+    "originPage": "Westpac NZ homepage",
+    "blockPosition": "middle"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "compact",
+    "purpose": "product-navigation",
+    "imagePattern": "icon"
+  },
+  "contentPattern": {
+    "structure": "icon + linked label per tile (grid)"
+  },
+  "reuseGuidance": {
+    "suitableFor": ["product/category navigation tile grids","icon + label quick navigation"],
+    "notSuitableFor": ["image-rich content cards","cards needing descriptions"]
+  },
+  "usage": {
+    "pagesUsing": ["/index"],
+    "reuseCount": 1,
+    "lastUsed": "2026-06-16T07:52:41Z"
+  }
+}

@@ -1,0 +1,4 @@
+/* Section metadata is a configuration block; it renders nothing itself. */
+.section-metadata {
+  display: none;
+}

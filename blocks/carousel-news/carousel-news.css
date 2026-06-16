@@ -1,0 +1,211 @@
+/* carousel-news: Westpac "News & stories" card carousel.
+   Source: .carousel-block on www.westpac.co.nz -- 4 white article cards.
+   Section provides the pale-grey background; the block itself is transparent. */
+
+.carousel-news {
+  color: var(--text-color);
+  padding: 15px 0 24px;
+}
+
+/* slides container holds the scroll area and (mobile) nav arrows */
+.carousel-news .carousel-news-slides-container {
+  position: relative;
+}
+
+.carousel-news .carousel-news-slides,
+.carousel-news .carousel-news-slide-indicators {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* horizontal scroller -- one/two cards visible on mobile, snap between them */
+.carousel-news .carousel-news-slides {
+  display: flex;
+  gap: 16px;
+  padding: 10px 4px;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  overflow-x: auto;
+}
+
+.carousel-news .carousel-news-slides::-webkit-scrollbar {
+  display: none;
+}
+
+/* CARD */
+.carousel-news .carousel-news-slide {
+  flex: 0 0 80%;
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  min-height: auto;
+  width: auto;
+  background-color: var(--background-color);
+  box-shadow: rgb(0 0 0 / 20%) 0 2px 10px 0;
+  overflow: hidden;
+}
+
+/* image: fills card top, fixed-ratio crop, red Westpac accent on the left edge */
+.carousel-news .carousel-news-slide .carousel-news-slide-image {
+  position: relative;
+  border-left: 5px solid var(--wbc-red);
+}
+
+.carousel-news .carousel-news-slide .carousel-news-slide-image picture {
+  display: block;
+}
+
+.carousel-news .carousel-news-slide .carousel-news-slide-image picture > img {
+  display: block;
+  width: 100%;
+  height: 178px;
+  object-fit: cover;
+}
+
+/* text area */
+.carousel-news .carousel-news-slide .carousel-news-slide-content {
+  z-index: auto;
+  position: static;
+  width: auto;
+  margin: 0;
+  padding: 24px 24px 30px;
+  color: var(--text-color);
+  background-color: transparent;
+}
+
+.carousel-news .carousel-news-slide-content h3 {
+  margin: 0 24px 10px 0;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--text-color);
+}
+
+.carousel-news .carousel-news-slide-content h3 a:any-link {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* trailing arrow appended to the title link, matching the source */
+.carousel-news .carousel-news-slide-content h3 a:any-link::after {
+  content: '';
+  display: inline-block;
+  width: 0.7em;
+  height: 0.7em;
+  margin-left: 0.35em;
+  border: 2px solid currentcolor;
+  border-bottom: 0;
+  border-left: 0;
+  transform: translateY(-0.1em) rotate(45deg);
+}
+
+.carousel-news .carousel-news-slide-content h3 a:hover {
+  color: var(--link-hover-color);
+  text-decoration: none;
+}
+
+.carousel-news .carousel-news-slide-content p {
+  margin: 6px 0 0;
+  font-size: var(--body-font-size-m);
+  line-height: 1.6;
+  color: var(--wbc-purple);
+}
+
+/* navigation arrows -- circular pill buttons, only useful while scrolling */
+.carousel-news .carousel-news-navigation-buttons {
+  position: absolute;
+  top: 84px; /* roughly centred on the image strip */
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+.carousel-news .carousel-news-navigation-buttons button {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  margin: 0;
+  padding: 0;
+  border-radius: 50%;
+  background-color: var(--wbc-purple);
+  pointer-events: auto;
+  transition: background-color 0.2s;
+}
+
+.carousel-news .carousel-news-navigation-buttons button:hover,
+.carousel-news .carousel-news-navigation-buttons button:focus-visible {
+  background-color: var(--wbc-purple-accent);
+}
+
+.carousel-news .carousel-news-navigation-buttons button::after {
+  display: block;
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: calc(50% + 2px);
+  width: 10px;
+  height: 10px;
+  border: 2px solid #fff;
+  border-bottom: 0;
+  border-left: 0;
+  transform: translate(-50%, -50%) rotate(-135deg);
+}
+
+.carousel-news .carousel-news-navigation-buttons button.slide-next::after {
+  left: calc(50% - 2px);
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+/* slide indicator dots */
+.carousel-news .carousel-news-slide-indicators {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 8px;
+  padding: 12px;
+  background-color: transparent;
+  line-height: 0;
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+.carousel-news .carousel-news-slide-indicator button {
+  width: 12px;
+  height: 12px;
+  margin: 0;
+  padding: 0;
+  border-radius: 50%;
+  background-color: #cfcfd6;
+  transition: background-color 0.2s;
+}
+
+.carousel-news .carousel-news-slide-indicator button:disabled,
+.carousel-news .carousel-news-slide-indicator button:hover,
+.carousel-news .carousel-news-slide-indicator button:focus-visible {
+  background-color: var(--wbc-purple);
+}
+
+/* DESKTOP: show all four cards side-by-side, hide the carousel chrome */
+@media (width >= 900px) {
+  .carousel-news .carousel-news-slides {
+    gap: 30px;
+    padding: 15px 0 0;
+    overflow-x: visible;
+    scroll-snap-type: none;
+  }
+
+  .carousel-news .carousel-news-slide {
+    flex: 1 1 0;
+  }
+
+  .carousel-news .carousel-news-navigation-buttons,
+  .carousel-news .carousel-news-slide-indicators {
+    display: none;
+  }
+}

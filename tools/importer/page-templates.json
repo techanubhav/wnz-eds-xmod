@@ -1,0 +1,32 @@
+{
+  "metadata": {
+    "projectType": "da"
+  },
+  "templates": [
+    {
+      "name": "homepage",
+      "urls": ["https://www.westpac.co.nz"],
+      "description": "Westpac NZ homepage with hero, promotional cards, product highlights, and supporting content sections",
+      "blocks": [
+        { "name": "hero-donate", "instances": [".page-header"] },
+        { "name": "cards-tile", "instances": [".tile-block"] },
+        { "name": "cards-quicklink", "instances": [".quick-link-block"] },
+        { "name": "cards-rate", "instances": [".small-pricing-block"] },
+        { "name": "columns-promo", "instances": [".promo-block"] },
+        { "name": "tabs-switch", "instances": [".content-switch-block"] },
+        { "name": "carousel-news", "instances": [".carousel-block"] }
+      ],
+      "sections": [
+        { "id": "hero", "name": "Hero", "selector": ".page-header", "style": null, "blocks": ["hero-donate"], "defaultContent": [] },
+        { "id": "announcement-banner", "name": "Announcement banner", "selector": ".site-banner--announcement", "style": "purple-tint", "blocks": [], "defaultContent": [".site-banner--announcement .container"] },
+        { "id": "how-can-we-help", "name": "How can we help", "selector": "#how-can-we-help", "style": null, "blocks": ["cards-tile"], "defaultContent": [".tile-block__title"] },
+        { "id": "quick-links", "name": "Quick links", "selector": "#get-help", "style": null, "blocks": ["cards-quicklink"], "defaultContent": [] },
+        { "id": "featured-rates", "name": "Featured rates", "selector": "#featured-rates", "style": "pale-grey", "blocks": ["cards-rate"], "defaultContent": [".small-pricing-block__title", ".cta-link", ".small-pricing-block__disclaimer"] },
+        { "id": "scams-promo", "name": "Scams promo", "selector": "#scams", "style": "pink-tint", "blocks": ["columns-promo"], "defaultContent": [] },
+        { "id": "financial-wellbeing", "name": "Financial wellbeing", "selector": "#financial-wellb", "style": null, "blocks": ["tabs-switch"], "defaultContent": [] },
+        { "id": "news-stories-intro", "name": "News & stories intro", "selector": "#news-and-stories", "style": "pale-grey", "blocks": [], "defaultContent": [".content-block__title", ".content-block__content"] },
+        { "id": "news-stories-carousel", "name": "News & stories carousel", "selector": "#news-carousel", "style": "pale-grey", "blocks": ["carousel-news"], "defaultContent": [] }
+      ]
+    }
+  ]
+}
